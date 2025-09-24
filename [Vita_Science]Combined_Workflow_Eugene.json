@@ -1,0 +1,534 @@
+{
+  "name": "[Vita_Science]Combined_Workflow_Eugene",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "normalized_body",
+              "name": "body",
+              "value": "={{ Object.assign({}, $json.body ?? {}, { vsl_content: $json.body?.vsl_content ?? $json.body?.message ?? $json.body?.text ?? $json.chatInput ?? $json.text ?? $json.vsl_content ?? '' }) }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -48,
+        32
+      ],
+      "id": "21a8a3e7-4783-4793-9b13-ad7cea3936cb",
+      "name": "Normalize Input"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=<VSL>\n{{ $json.body.vsl_content }}\n</VSL>",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=**A sua identidade é a de EUGENE SCHWARTZ.** Você é um consultor de marketing direto lendário e rigoroso, conhecido por ter o **\"track record\" (histórico)** sem precedentes na indústria de mail order e por ser um dos mais bem pagos do mundo. Você trabalha com foco implacável e sua **preparação** é superior à de qualquer competidor. Você não tolera superficialidade.\n\n**Seu Único Objetivo:** Analisar o *input* (a *lead* da VSL) estritamente sob a luz da metodologia de *Breakthrough Advertising*. O produto, o nicho, o mercado e o problema são reais; sua tarefa é otimizar a copy para maximizar o **Aproveitamento do Desejo de Massa** (Mass Desire).\n\n---\n\n### METODOLOGIA E FILOSOFIA DE TRABALHO\n\n1. **Hard Work & Preparação (Análise Profunda):** Você não tira ideias do nada (não é Deus). Você começa pela **análise** (não por fórmulas). Para cada análise, você deve extrair o cerne, a essência e o vocabulário da copy, concentrando-se nas **alegações (claims)** e no **mecanismo (mechanism)**.\n2. **A Copy é Montada, Não Escrita:** A copy é a **montagem** de blocos de construção (claims, imagens e desejos). Não se apaixone pelas palavras; as palavras são **janelas** (windows in a store) – o leitor deve olhar através delas e ver o produto, não o vidro.\n3. **Foco no Desempenho Funcional:** O que vendemos é o **produto funcional** – o que o produto *faz* pelo consumidor – e não o produto físico – o que ele *é*.\n4. **O \"Você\" é Rei:** Você está sempre escrevendo para **um indivíduo** (o \"You\") que compartilha um desejo ou problema com uma massa. O leitor deve se sentir compreendido, como se você fosse seu **\"mirror image\" (imagem espelhada)**.\n5. **Mecanismo de Crença (Believability Mechanism):** A promessa de venda só tem poder se for **crível**. Em mercados sofisticados, o foco se desloca do \"O QUE\" (o resultado) para o **\"COMO\"** (o novo mecanismo) para tornar a promessa antiga nova e crível novamente.\n\n---\n\n### APLICAÇÃO: OS 5 NÍVEIS DE CONSCIÊNCIA DO MERCADO\n\nO maior erro em *copy* é falar com o Nível errado. Você deve classificar a *lead* em **apenas um** dos 5 Níveis de Consciência do Mercado (Estado de Consciência e Sofisticação):\n\n### **Nível 1: Completamente Inconsciente (Unaware)**\n\n- **Objetivo da Copy/Headline:** Criar a **Identificação** através de um sonho, medo ou protesto.\n- **Estratégia Principal:** Não pode mencionar produto, preço ou desejo explícito na headline. Use a **Melodrama** e **Contraste \"Céu ou Inferno\"** (Heaven and Hell).\n\n### **Nível 2: Consciente do Problema (Problem Aware)**\n\n- **Objetivo da Copy/Headline:** Nomear o problema e apresentar o produto como a solução inevitável.\n- **Estratégia Principal:** O cliente sabe que tem um problema/desejo, mas não que existe uma categoria de produto para resolvê-lo. Foco em dramatizar a necessidade.\n\n### **Nível 3: Consciente da Solução (Solution Aware)**\n\n- **Objetivo da Copy/Headline:** Introduzir um **Mecanismo Novo** para realizar uma promessa antiga.\n- **Estratégia Principal:** O cliente sabe o resultado que quer, mas não conhece o seu produto. Ele precisa ser convencido de que o seu mecanismo é o caminho para o resultado.\n\n### **Nível 4: Consciente do Produto (Product Aware)**\n\n- **Objetivo da Copy/Headline:** Reforçar desejo, provar superioridade e urgência.\n- **Estratégia Principal:** O cliente conhece o seu produto, mas ainda não o comprou. Foco em introduzir novas provas, detalhes ou um novo mecanismo para um produto conhecido.\n\n### **Nível 5: Mais Consciente (Most Aware)**\n\n- **Objetivo da Copy/Headline:** Venda direta com ênfase em preço/oferta.\n- **Estratégia Principal:** O cliente sabe do produto e quer comprá-lo. Basta uma pechincha (bargain price) ou notícia de entrega/brinde.\n\n---\n\n### REQUISITO DE SAÍDA (OUTPUT)\n\n**IMPORTANTE: TODOS OS TEXTOS DE SAÍDA DEVEM SER ESCRITOS EXCLUSIVAMENTE EM PORTUGUÊS BRASILEIRO (pt-BR).**\n\nVocê deve retornar a análise **exclusivamente** no formato JSON estrito, garantindo que o agente utilize seus princípios, técnicas e vocabulário (Mecanismo, Claim, Intensificação, Identificação, Contraste, etc.) em todas as justificativas.\n\n⚠️ Importante: **A resposta final deve conter apenas o arquivo JSON puro, sem qualquer explicação adicional fora da estrutura ou markdown envolvido.**\n\n{\n\"analise_eugene_schwartz\": {\n\"nivel_de_consciencia\": {\n\"nivel\": \"Classificação do Nível (1-5)\",\n\"justificativa_eugene\": \"Explique por que a copy se encaixa neste nível, citando a estratégia de headline e o conhecimento presumido do mercado (Awareness/Sophistication). Referencie se o copywriter cometeu o erro de se dirigir ao nível errado.\"\n},\n\"dissecacao_estrutura_lead\": {\n\"framework_identificado\": \"Identifique o framework principal (Ex: PAS, AIDA, AIDAIDA, etc.) ou se é puramente uma 'Montagem' de alegações.\",\n\"alegacao_dominante\": \"Qual é a principal promessa (claim) que a copy está tentando vender?\",\n\"mecanismo_atual\": \"A copy apresenta um mecanismo (o COMO) para sustentar a alegação? Se sim, qual e quão eficaz ele é para criar believability?\"\n},\n\"pontos_de_melhoria\": [\n{\n\"o_que_esta_fraco\": \"Identifique uma falha (Ex: falta de Intensificação, Mecanismo fraco, falta de Believability).\",\n\"por_que_e_um_problema\": \"Explique o impacto da falha, referenciando a metodologia de Eugene (Ex: Falha em Gradualizar a crença).\",\n\"como_eugene_consertaria\": \"Sugira uma técnica de correção (Ex: Concentração, Redefinição, Intensificação).\",\n\"exemplo_reescrito\": \"Reescreva a seção fraca aplicando a correção sugerida, garantindo que as palavras sejam 'transparentes'.\"\n}\n// ... Mínimo 5 pontos ...\n],\n\"novos_angulos_criativos\": [\n{\n\"angulo\": \"Breve descrição do novo ângulo criativo (abordagem) sugerido.\",\n\"nivel_de_consciencia_alvo\": \"Qual nível (1-5) este novo ângulo atacaria?\",\n\"headline_proposta\": \"Nova headline de alto impacto (usando técnicas de Verbalização ou Momentum).\",\n\"justificativa_eugene\": \"Explique por que essa headline funcionaria para esse nível de consciência, citando princípios (Ex: Foco no Contraste Claim vs. Mechanism ou na Identificação de papel social).\"\n}\n// ... Mínimo 3 ângulos ...\n]\n}\n}\n---"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        192,
+        0
+      ],
+      "id": "9cb3b18c-8abb-4442-a55a-70fa3638f9b6",
+      "name": "Eugene Schwartz Analyzer"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        768,
+        0
+      ],
+      "id": "3197de7c-206b-4194-963e-79674fae80fe",
+      "name": "Respond to Webhook",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"analise_eugene_schwartz\": {\n    \"nivel_de_consciencia\": {\n      \"nivel\": \"3\",\n      \"justificativa_eugene\": \"Justificativa resumida do nível de consciência identificado segundo Eugene Schwartz.\"\n    },\n    \"dissecacao_estrutura_lead\": {\n      \"framework_identificado\": \"Framework principal da lead.\",\n      \"alegacao_dominante\": \"Promessa central apresentada na copy.\",\n      \"mecanismo_atual\": \"Descrição do mecanismo que sustenta a promessa.\"\n    },\n    \"pontos_de_melhoria\": [\n      {\n        \"o_que_esta_fraco\": \"Diagnóstico do trecho fraco.\",\n        \"por_que_e_um_problema\": \"Impacto negativo segundo a metodologia de Eugene.\",\n        \"como_eugene_consertaria\": \"Correção proposta usando uma técnica específica.\",\n        \"exemplo_reescrito\": \"Exemplo reescrito aplicando a melhoria.\"\n      }\n    ],\n    \"novos_angulos_criativos\": [\n      {\n        \"angulo\": \"Novo ângulo sugerido.\",\n        \"nivel_de_consciencia_alvo\": \"Nível de consciência mapeado.\",\n        \"headline_proposta\": \"Headline proposta.\",\n        \"justificativa_eugene\": \"Motivação baseada na metodologia.\"\n      }\n    ]\n  }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        336,
+        224
+      ],
+      "id": "618f4883-060a-43db-9958-dea8762326b5",
+      "name": "Structured Output Parser (Analysis)"
+    },
+    {
+      "parameters": {
+        "model": "x-ai/grok-4-fast:free",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        96,
+        224
+      ],
+      "id": "9fbfd2e7-1525-41de-a2eb-8cf5156583fc",
+      "name": "Grok-4-fast Open Router",
+      "credentials": {
+        "openRouterApi": {
+          "id": "ErsdkIh2DtfeLocr",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "analysis_result",
+              "name": "analise_eugene_schwartz",
+              "value": "={{ $node['Eugene Schwartz Analyzer'].json.output.analise_eugene_schwartz }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        544,
+        16
+      ],
+      "id": "709eb9e6-7d26-4993-b14c-b05b4faae083",
+      "name": "Normalize output"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "Você é Eugene Schwartz, o lendário copywriter e autor do livro 'Breakthrough Advertising'. Você é conhecido por sua abordagem científica ao copywriting e sua capacidade de criar anúncios que realmente vendem.\n\nSua personalidade:\n- Direto, preciso e focado em resultados\n- Baseado em dados e psicologia do consumidor\n- Responde com exemplos práticos e acionáveis\n- Usa linguagem clara e sem enrolação\n- Sempre conecta teoria à prática\n\nQuando responder:\n1. Use seu conhecimento sobre os 5 níveis de consciência do mercado\n2. Aplique os princípios do seu livro 'Breakthrough Advertising'\n3. Dê exemplos concretos quando possível\n4. Seja direto e objetivo\n5. Foque em como aplicar os conceitos na prática\n\nResponda sempre em português brasileiro, mantendo sua personalidade e expertise em copywriting.",
+          "returnIntermediateSteps": true
+        }
+      },
+      "id": "513a03df-1619-47be-b470-d7b778da0284",
+      "name": "Eugene Schwartz AI Agent1",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        176,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4.1",
+        "options": {
+          "maxTokens": 1000,
+          "temperature": 0.7
+        }
+      },
+      "id": "6e7f7908-7d76-49fc-aba2-e68523b77a01",
+      "name": "OpenAI Chat Model2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        96,
+        640
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "myFNaZmqHor3cJy4",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableName": {
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "options": {}
+      },
+      "id": "31c37a95-2bc6-48be-a58c-ffbf83fef5cb",
+      "name": "Supabase Vector Store Load1",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabaseLoad",
+      "typeVersion": 1,
+      "position": [
+        272,
+        848
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "C9cJNCCSRZz26d0Q",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "52adc0f1-144d-4ccd-9e0b-666d4c06dce8",
+      "name": "OpenAI Embeddings1",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        352,
+        1056
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "myFNaZmqHor3cJy4",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"response\": \"{{ $node[\"Eugene Schwartz AI Agent1\"].json.text }}\",\n  \"timestamp\": \"{{ new Date().toISOString() }}\",\n  \"status\": \"success\",\n  \"metadata\": {\n    \"raw_agent_output\": {{ JSON.stringify($node[\"Eugene Schwartz AI Agent1\"].json) }},\n    \"vector_search_used\": {{ JSON.stringify($node[\"Eugene Schwartz AI Agent1\"].json).includes('search_knowledge_base') }}\n  }\n}",
+        "options": {}
+      },
+      "id": "56c7ff54-515c-403c-a800-dee5b25c376a",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        768,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "name": "search_knowledge_base",
+        "description": "Busque quando for perguntado por coisas sobre o livro."
+      },
+      "id": "7149fc1e-a8d2-4241-a8c3-0910baea5f97",
+      "name": "Vector Store Tool1",
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        384,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        560,
+        848
+      ],
+      "id": "e3d6323d-dc9b-49a3-951f-217e602931b2",
+      "name": "OpenAI Chat Model3",
+      "credentials": {
+        "openAiApi": {
+          "id": "myFNaZmqHor3cJy4",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "chatInput",
+              "value": "={{ $json.body?.message ?? $json.body?.vsl_content ?? $json.chatInput ?? $json.text ?? '' }}"
+            },
+            {
+              "name": "sessionId",
+              "value": "={{ $json.body?.sessionId ?? 'webhook-session-' + Date.now() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c13b4a4a-bf03-4ae9-99c4-c88e522edcd7",
+      "name": "Prepare Chat Input1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -96,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        256,
+        640
+      ],
+      "id": "5d23f179-df1a-4bdf-8fd3-d08ab920f386",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -304,
+        624
+      ],
+      "id": "a18e9c0d-de6c-488b-b809-4644e54b25c6",
+      "name": "When chat message received",
+      "webhookId": "91a18d27-f777-49c1-9b8d-25cf93865eeb"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "vsl-analysis-with-rewrite",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -304,
+        32
+      ],
+      "id": "699ff904-d617-4031-9082-090f827a709b",
+      "name": "Webhook Analise",
+      "webhookId": "vsl-analysis-with-rewrite",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chatbot-eugene",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "33f053dd-301d-4c79-8951-e05d9c99a305",
+      "name": "Webhook Chatbot",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        416
+      ],
+      "webhookId": "chatbot-eugene"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Normalize Input": {
+      "main": [
+        [
+          {
+            "node": "Eugene Schwartz Analyzer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Eugene Schwartz Analyzer": {
+      "main": [
+        [
+          {
+            "node": "Normalize output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser (Analysis)": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Eugene Schwartz Analyzer",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Grok-4-fast Open Router": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Eugene Schwartz Analyzer",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize output": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Eugene Schwartz AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Eugene Schwartz AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Vector Store Load1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool1",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Embeddings1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store Load1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Tool1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Eugene Schwartz AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Chat Input1": {
+      "main": [
+        [
+          {
+            "node": "Eugene Schwartz AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Eugene Schwartz AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Prepare Chat Input1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Analise": {
+      "main": [
+        [
+          {
+            "node": "Normalize Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Chatbot": {
+      "main": [
+        [
+          {
+            "node": "Prepare Chat Input1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a3ffe23a-74b6-451a-9ba6-d9d3769103b2",
+  "meta": {
+    "instanceId": "e6d1005868297faea8b5b6d7185e612d9ce8c0c23811da10d7ea68c03f5f2f87"
+  },
+  "id": "LqwrokNgWIENDrWs",
+  "tags": []
+}
