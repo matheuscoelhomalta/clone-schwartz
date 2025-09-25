@@ -3,23 +3,25 @@
 Sistema N8N completo que implementa o clone digital de Eugene Schwartz através de um workflow unificado.
 
 ## 🌐 **SISTEMA EM PRODUÇÃO**
-**Acesse em:** [copyoracle.com](https://copyoracle.com)
 
-- ✅ **Análise VSL completa** - Upload de arquivos .txt
+**Acesse em:** [copyoracle.com](https://copyoracle.com)
+**Apresentação:** [Ver demonstração](https://share.descript.com/view/Z7AAywXqDPz)
+
+- ✅ **Análise VSL completa** - Insights acionáveis
 - ✅ **Chatbot Eugene Schwartz** - Interação em tempo real
 - ✅ **Histórico de análises** - Armazenamento local
 - ✅ **Interface web responsiva** - Next.js + Tailwind
 
 ## Workflow
 
-| Arquivo | Endpoints | Função |
-|---------|-----------|--------|
+| Arquivo                                       | Endpoints                                                         | Função                                |
+| --------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------- |
 | `[Vita_Science]Combined_Workflow_Eugene.json` | `/webhook/vsl-analysis-with-rewrite`<br>`/webhook/chatbot-eugene` | Análise VSL e chatbot Eugene Schwartz |
 
 ## Pré-requisitos
 
 ### Infraestrutura
-- **N8N** (cloud ou self-hosted) com webhooks HTTPS
+
 - **OpenRouter API** - Grok-4-fast para análises
 - **OpenAI API** - GPT-4 e embeddings
 - **Supabase** - Vector store com livro "Breakthrough Advertising"
@@ -27,11 +29,13 @@ Sistema N8N completo que implementa o clone digital de Eugene Schwartz através 
 ## Instalação
 
 1. **Import Workflow**
+
    ```
    N8N > Settings > Import > [Vita_Science]Combined_Workflow_Eugene.json
    ```
 
 2. **Configure Credentials**
+
    - OpenRouter account
    - OpenAI account
    - Supabase account
@@ -41,6 +45,7 @@ Sistema N8N completo que implementa o clone digital de Eugene Schwartz através 
 ## Uso
 
 ### Análise VSL
+
 ```bash
 curl -X POST "$N8N_URL/webhook/vsl-analysis-with-rewrite" \
   -H "Content-Type: application/json" \
@@ -48,6 +53,7 @@ curl -X POST "$N8N_URL/webhook/vsl-analysis-with-rewrite" \
 ```
 
 ### Chatbot Eugene
+
 ```bash
 curl -X POST "$N8N_URL/webhook/chatbot-eugene" \
   -H "Content-Type: application/json" \
@@ -65,6 +71,7 @@ curl -X POST "$N8N_URL/webhook/chatbot-eugene" \
 ## Outputs
 
 ### Análise VSL
+
 ```json
 {
   "analise_eugene_schwartz": {
@@ -76,11 +83,12 @@ curl -X POST "$N8N_URL/webhook/chatbot-eugene" \
 ```
 
 ### Chatbot
+
 ```json
 {
   "response": "Resposta do Eugene...",
   "status": "success",
-  "metadata": {"vector_search_used": true}
+  "metadata": { "vector_search_used": true }
 }
 ```
 
